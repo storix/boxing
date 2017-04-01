@@ -20,6 +20,8 @@ package com.bilibili.boxing.model.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.bilibili.boxing.model.entity.impl.ImageMedia;
+
 /**
  * The pick config.<br/>
  * 1.{@link Mode} is necessary. <br/>
@@ -42,6 +44,8 @@ public class BoxingConfig implements Parcelable {
     private boolean mNeedPaging = true;
 
     private int mMaxCount = DEFAULT_SELECTED_COUNT;
+    private long mMaxGifSize = ImageMedia.DEFAULT_MAX_GIF_SIZE;
+    private long mMaxImageSize = ImageMedia.DEFAULT_MAX_IMAGE_SIZE;
 
     public enum Mode {
         SINGLE_IMG, MULTI_IMG, VIDEO
@@ -86,6 +90,22 @@ public class BoxingConfig implements Parcelable {
             return mMaxCount;
         }
         return DEFAULT_SELECTED_COUNT;
+    }
+
+    /**
+     * get the max gif size set by {@link #withMaxGifSize(long)}, if not set return {@link ImageMedia#DEFAULT_MAX_GIF_SIZE}.
+     * @return max gif size
+     */
+    public long getMaxGifSize() {
+        return mMaxGifSize;
+    }
+
+    /**
+     * get the max image size set by {@link #withMaxImageSize(long)}}, if not set return {@link ImageMedia#DEFAULT_MAX_IMAGE_SIZE}.
+     * @return max image size
+     */
+    public long getMaxImageSize() {
+        return mMaxImageSize;
     }
 
     public boolean isNeedLoading() {
@@ -158,6 +178,34 @@ public class BoxingConfig implements Parcelable {
         return this;
     }
 
+    /**
+     * set the max allowed gif size in bytes.
+     * @param maxGifSize max gif size, if not set the default max size is used
+     * @return the build config to chain calls
+     */
+    public BoxingConfig withMaxGifSize(long maxGifSize) {
+        if (maxGifSize <= 0) {
+            return this;
+        }
+
+        this.mMaxGifSize = maxGifSize;
+        return this;
+    }
+
+    /**
+     * set the max allowed image size in bytes.
+     * @param maxImageSize max image size, if not set the default max size is used
+     * @return the build config to chain calls
+     */
+    public BoxingConfig withMaxImageSize(long maxImageSize) {
+        if (maxImageSize <= 0) {
+            return this;
+        }
+
+        this.mMaxImageSize = maxImageSize;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "BoxingConfig{" +
@@ -180,6 +228,8 @@ public class BoxingConfig implements Parcelable {
         dest.writeByte(this.mNeedGif ? (byte) 1 : (byte) 0);
         dest.writeByte(this.mNeedPaging ? (byte) 1 : (byte) 0);
         dest.writeInt(this.mMaxCount);
+        dest.writeLong(this.mMaxGifSize);
+        dest.writeLong(this.mMaxImageSize);
     }
 
     protected BoxingConfig(Parcel in) {
@@ -192,6 +242,8 @@ public class BoxingConfig implements Parcelable {
         this.mNeedGif = in.readByte() != 0;
         this.mNeedPaging = in.readByte() != 0;
         this.mMaxCount = in.readInt();
+        this.mMaxGifSize = in.readLong();
+        this.mMaxImageSize = in.readLong();
     }
 
     public static final Creator<BoxingConfig> CREATOR = new Creator<BoxingConfig>() {

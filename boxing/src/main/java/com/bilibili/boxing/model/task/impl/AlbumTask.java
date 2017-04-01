@@ -24,7 +24,9 @@ import android.support.annotation.WorkerThread;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 
+import com.bilibili.boxing.model.BoxingManager;
 import com.bilibili.boxing.model.callback.IAlbumTaskCallback;
+import com.bilibili.boxing.model.config.BoxingConfig;
 import com.bilibili.boxing.model.entity.AlbumEntity;
 import com.bilibili.boxing.model.entity.impl.ImageMedia;
 import com.bilibili.boxing.utils.BoxingExecutor;
@@ -110,7 +112,16 @@ public class AlbumTask {
                 String picPath = coverCursor.getString(coverCursor.getColumnIndex(Media.DATA));
                 String id = coverCursor.getString(coverCursor.getColumnIndex(Media._ID));
                 album.mCount = coverCursor.getCount();
-                album.mImageList.add(new ImageMedia(id, picPath));
+
+                final ImageMedia imageItem  = new ImageMedia(id, picPath);
+                final BoxingConfig config = BoxingManager.getInstance().getBoxingConfig();
+
+                if (config != null) {
+                    imageItem.setMaxGifSize(config.getMaxGifSize());
+                    imageItem.setMaxImageSize(config.getMaxImageSize());
+                }
+
+                album.mImageList.add(imageItem);
                 if (album.mImageList.size() > 0) {
                     mBucketMap.put(buckId, album);
                 }

@@ -417,6 +417,13 @@ public abstract class AbsBoxingViewFragment extends Fragment implements PickerCo
         if (output != null) {
             List<BaseMedia> medias = new ArrayList<>(1);
             ImageMedia media = new ImageMedia(String.valueOf(System.currentTimeMillis()), output.getPath());
+
+            BoxingConfig config = BoxingManager.getInstance().getBoxingConfig();
+            if (config != null) {
+                media.setMaxGifSize(config.getMaxGifSize());
+                media.setMaxImageSize(config.getMaxImageSize());
+            }
+
             medias.add(media);
             onFinish(medias);
         }
@@ -463,6 +470,13 @@ public abstract class AbsBoxingViewFragment extends Fragment implements PickerCo
                 return;
             }
             ImageMedia cameraMedia = new ImageMedia(file);
+
+            BoxingConfig config = BoxingManager.getInstance().getBoxingConfig();
+            if (config != null) {
+                cameraMedia.setMaxGifSize(config.getMaxGifSize());
+                cameraMedia.setMaxImageSize(config.getMaxImageSize());
+            }
+
             cameraMedia.saveMediaStore(fragment.getAppCr());
             fragment.onCameraFinish(cameraMedia);
         }
