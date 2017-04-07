@@ -26,6 +26,8 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.bilibili.boxing.model.BoxingManager;
+import com.bilibili.boxing.model.config.BoxingConfig;
 import com.bilibili.boxing.model.entity.BaseMedia;
 import com.bilibili.boxing.utils.BoxingExecutor;
 import com.bilibili.boxing.utils.BoxingExifHelper;
@@ -43,7 +45,7 @@ import java.io.File;
  * @author ChenSL
  */
 public class ImageMedia extends BaseMedia implements Parcelable {
-    public static final long DEFAULT_MAX_GIF_SIZE = 1024 * 1024L;
+    private static final long DEFAULT_MAX_COMPRESSION_SIZE = 1024 * 1024L;
     public static final long DEFAULT_MAX_IMAGE_SIZE = 1024 * 1024L;
 
     private boolean mIsSelected;
@@ -51,8 +53,6 @@ public class ImageMedia extends BaseMedia implements Parcelable {
     private String mCompressPath;
     private int mHeight;
     private int mWidth;
-    private long mMaxGifSize = DEFAULT_MAX_GIF_SIZE;
-    private long mMaxImageSize = DEFAULT_MAX_IMAGE_SIZE;
     private IMAGE_TYPE mImageType;
     private String mMimeType;
 
@@ -78,8 +78,6 @@ public class ImageMedia extends BaseMedia implements Parcelable {
         this.mHeight = builder.mHeight;
         this.mIsSelected = builder.mIsSelected;
         this.mWidth = builder.mWidth;
-        this.mMaxGifSize = builder.mMaxGifSize;
-        this.mMaxImageSize = builder.mMaxImageSize;
         this.mMimeType = builder.mMimeType;
         this.mImageType = getImageTypeByMime(builder.mMimeType);
     }
@@ -98,15 +96,22 @@ public class ImageMedia extends BaseMedia implements Parcelable {
     }
 
     public boolean isGifOverSize() {
-        return isGif() && getSize() > mMaxGifSize;
+        return isGif() && getSize() > getMaxImageSize();
     }
 
     public boolean isGif() {
         return getImageType() == IMAGE_TYPE.GIF;
     }
 
+    /**
+     * Indicates whether the current image has the size that is bigger than the allowed one.
+     *
+     * @return {@code true} if the image is too large, {@code false} otherwise.
+     */
+    public boolean isImageOverSize() { return getSize() > getMaxImageSize(); }
+
     public boolean compress(ImageCompressor imageCompressor) {
-        return CompressTask.compress(imageCompressor, this, mMaxImageSize);
+        return CompressTask.compress(imageCompressor, this, DEFAULT_MAX_COMPRESSION_SIZE);
     }
 
     public boolean compress(ImageCompressor imageCompressor, int maxSize) {
@@ -160,13 +165,15 @@ public class ImageMedia extends BaseMedia implements Parcelable {
         return mWidth;
     }
 
-    public long getMaxGifSize() { return mMaxGifSize; }
+    public long getMaxImageSize() {
+        final BoxingConfig config = BoxingManager.getInstance().getBoxingConfig();
 
-    public void setMaxGifSize(long maxGifSize) { mMaxGifSize = maxGifSize; }
+        if (config != null) {
+            return config.getMaxImageSize();
+        }
 
-    public long getMaxImageSize() { return mMaxImageSize; }
-
-    public void setMaxImageSize(long maxImageSize) { mMaxImageSize = maxImageSize; }
+        return DEFAULT_MAX_IMAGE_SIZE;
+    }
 
     public void removeExif() {
         BoxingExifHelper.removeExif(getPath());
@@ -255,8 +262,6 @@ public class ImageMedia extends BaseMedia implements Parcelable {
         private String mSize;
         private int mHeight;
         private int mWidth;
-        private long mMaxGifSize = DEFAULT_MAX_GIF_SIZE;
-        private long mMaxImageSize = DEFAULT_MAX_IMAGE_SIZE;
         private String mMimeType;
 
         public Builder(String id, String path) {
@@ -281,16 +286,6 @@ public class ImageMedia extends BaseMedia implements Parcelable {
 
         public Builder setWidth(int width) {
             mWidth = width;
-            return this;
-        }
-
-        public Builder setMaxGifSize(long maxGifSize) {
-            mMaxGifSize = maxGifSize;
-            return this;
-        }
-
-        public Builder setMaxImageSize(long maxImageSize) {
-            mMaxImageSize = maxImageSize;
             return this;
         }
 
