@@ -30,6 +30,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bilibili.boxing.model.BoxingBuilderConfig;
 import com.bilibili.boxing.model.BoxingManager;
@@ -128,6 +129,14 @@ public abstract class AbsBoxingViewFragment extends Fragment implements PickerCo
      */
     @Override
     public void showAlbum(@Nullable List<AlbumEntity> albums) {
+    }
+
+    @Override
+    public void showOverSizeError() {
+        final Activity activity = getActivity();
+        if (activity != null) {
+            Toast.makeText(getActivity(), R.string.boxing_image_too_big, Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -385,6 +394,14 @@ public abstract class AbsBoxingViewFragment extends Fragment implements PickerCo
     public final boolean canLoadNextPage() {
         return mPresenter.canLoadNextPage();
     }
+
+    /**
+     * Corresponds to {@link com.bilibili.boxing.presenter.PickerContract.Presenter#canSelectMedia(BaseMedia)}.
+     *
+     * @param media The media to check.
+     * @return {@code true} if the media can be selected.
+     */
+    public final boolean canSelectMedia(@NonNull BaseMedia media) { return mPresenter.canSelectMedia(media); }
 
     public final void onLoadNextPage() {
         mPresenter.onLoadNextPage();

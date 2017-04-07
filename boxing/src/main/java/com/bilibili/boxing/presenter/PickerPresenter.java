@@ -18,6 +18,7 @@
 package com.bilibili.boxing.presenter;
 
 import android.content.ContentResolver;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.bilibili.boxing.model.BoxingManager;
@@ -87,6 +88,18 @@ public class PickerPresenter implements PickerContract.Presenter {
     @Override
     public boolean canLoadNextPage() {
         return !mIsLoadingNextPage;
+    }
+
+    @Override
+    public boolean canSelectMedia(@NonNull BaseMedia media) {
+        if (media instanceof ImageMedia) {
+            if (((ImageMedia) media).isImageOverSize()) {
+                mTasksView.showOverSizeError();
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Override
