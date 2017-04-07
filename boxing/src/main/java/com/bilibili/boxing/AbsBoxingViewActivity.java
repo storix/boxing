@@ -28,6 +28,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bilibili.boxing.loader.IBoxingCallback;
+import com.bilibili.boxing.loader.IBoxingMediaLoader;
+import com.bilibili.boxing.loader.IBoxingMediaRecyclingLoader;
 import com.bilibili.boxing.model.BoxingManager;
 import com.bilibili.boxing.model.config.BoxingConfig;
 import com.bilibili.boxing.model.entity.AlbumEntity;
@@ -125,6 +127,16 @@ public abstract class AbsBoxingViewActivity extends AppCompatActivity implements
 
     public final void loadRawImage(@NonNull ImageView img, @NonNull String path, int width, int height, IBoxingCallback callback) {
         BoxingMediaLoader.getInstance().displayRaw(img, path, width, height, callback);
+    }
+
+    /**
+     * Recycles the raw image if the current media loader implements {@link IBoxingMediaRecyclingLoader}, does nothing otherwise.
+     *
+     * @param img  The image view containing the raw resource.
+     * @param path The absolute path to the resource.
+     */
+    public final void recycleRawImage(@NonNull ImageView img, @NonNull String path) {
+        BoxingMediaLoader.getInstance().recycleRaw(img, path);
     }
 
     /**
