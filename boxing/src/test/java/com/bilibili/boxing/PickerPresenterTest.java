@@ -178,4 +178,12 @@ public class PickerPresenterTest {
                 ArgumentCaptor.forClass(Integer.class).capture(), ArgumentCaptor.forClass(String.class).capture(), mLoadMediaCallback.capture());
     }
 
+    @Test
+    public void canSelectMedia() {
+        final BaseMedia media = new ImageMedia("id", "path");
+        media.setSize(String.valueOf(ImageMedia.DEFAULT_MAX_IMAGE_SIZE - 1));
+        Assert.assertTrue(mPresenter.canSelectMedia(media));
+        media.setSize(String.valueOf(ImageMedia.DEFAULT_MAX_IMAGE_SIZE + 1));
+        Assert.assertFalse(mPresenter.canSelectMedia(media));
+    }
 }
