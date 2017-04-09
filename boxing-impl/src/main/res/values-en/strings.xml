@@ -18,6 +18,7 @@
 
 <resources>
     <string name="boxing_ok">OK</string>
+    <string name="boxing_preview">Preview</string>
     <string name="boxing_fab_label_camera">take a shot</string>
 
     <string name="boxing_image_preview_title_fmt">%1$s/%2$s</string>
