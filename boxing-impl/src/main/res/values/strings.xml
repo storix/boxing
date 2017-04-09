@@ -19,6 +19,7 @@
     <string name="boxing_app_name">Boxing</string>
     <string name="boxing_ok">确定</string>
     <string name="boxing_preview">预览</string>
+    <string name="boxing_all_photos_album">所有相片</string>
     <string name="boxing_fab_label_camera">拍照</string>
 
     <string name="boxing_image_preview_title_fmt">%1$s/%2$s</string>

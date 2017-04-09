@@ -53,7 +53,10 @@ public class BoxingAlbumAdapter extends RecyclerView.Adapter<BoxingAlbumAdapter.
 
     public BoxingAlbumAdapter(Context context) {
         this.mAlums = new ArrayList<>();
-        this.mAlums.add(AlbumEntity.createDefaultAlbum());
+        final AlbumEntity defaultAlbum = AlbumEntity.createDefaultAlbum();
+        defaultAlbum.mBucketName = context.getString(R.string.boxing_all_photos_album);
+        this.mAlums.add(defaultAlbum);
+
         this.mInflater = LayoutInflater.from(context);
     }
 

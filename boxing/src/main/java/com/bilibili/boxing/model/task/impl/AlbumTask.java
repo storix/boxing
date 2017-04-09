@@ -40,7 +40,7 @@ import java.util.Map;
  */
 @WorkerThread
 public class AlbumTask {
-    private static final String UNKNOWN_ALBUM_NAME = "unknow";
+    private static final String UNKNOWN_ALBUM_NAME = "unknown";
     private static final String SELECTION_IMAGE_MIME_TYPE = Media.MIME_TYPE + "=? or " + Media.MIME_TYPE + "=? or " + Media.MIME_TYPE + "=? or " + Media.MIME_TYPE + "=?";
     private static final String SELECTION_ID = Media.BUCKET_ID + "=? and (" + SELECTION_IMAGE_MIME_TYPE + " )";
     private int mUnknownAlbumNumber = 1;
