@@ -38,7 +38,7 @@
         <item name="titleTextColor">@color/boxing_white</item>
         <item name="android:textColorSecondary">@color/boxing_white</item>
         <item name="android:textColor">@color/boxing_white</item>
-        <item name="android:background">@color/boxing_colorPrimaryDark</item>
+        <item name="android:background">@color/boxing_colorPrimary</item>
     </style>
 
     <!-- TextAppearance -->

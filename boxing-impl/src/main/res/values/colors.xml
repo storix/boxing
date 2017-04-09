@@ -17,8 +17,8 @@
   -->
 
 <resources>
-    <color name="boxing_colorPrimary">#000000</color>
-    <color name="boxing_colorPrimaryDark">#ff212121</color>
+    <color name="boxing_colorPrimary">#ff212121</color>
+    <color name="boxing_colorPrimaryDark">#000000</color>
     <color name="boxing_colorPrimaryAlpha">#44000000</color>
     <color name="boxing_colorAccent">#FF4081</color>
 
