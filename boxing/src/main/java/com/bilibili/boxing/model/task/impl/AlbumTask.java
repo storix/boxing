@@ -17,6 +17,7 @@
 package com.bilibili.boxing.model.task.impl;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore.Images.Media;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import android.support.annotation.WorkerThread;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 
+import com.bilibili.boxing.R;
 import com.bilibili.boxing.model.callback.IAlbumTaskCallback;
 import com.bilibili.boxing.model.entity.AlbumEntity;
 import com.bilibili.boxing.model.entity.impl.ImageMedia;
@@ -40,16 +42,17 @@ import java.util.Map;
  */
 @WorkerThread
 public class AlbumTask {
-    private static final String UNKNOWN_ALBUM_NAME = "unknown";
     private static final String SELECTION_IMAGE_MIME_TYPE = Media.MIME_TYPE + "=? or " + Media.MIME_TYPE + "=? or " + Media.MIME_TYPE + "=? or " + Media.MIME_TYPE + "=?";
     private static final String SELECTION_ID = Media.BUCKET_ID + "=? and (" + SELECTION_IMAGE_MIME_TYPE + " )";
     private int mUnknownAlbumNumber = 1;
+    private final String mUnknownAlbumName;
     private Map<String, AlbumEntity> mBucketMap;
     private AlbumEntity mDefaultAlbum;
 
-    public AlbumTask() {
+    public AlbumTask(@NonNull final Context context) {
+        this.mUnknownAlbumName = context.getString(R.string.boxing_unknown_album);
         this.mBucketMap = new ArrayMap<>();
-        this.mDefaultAlbum = AlbumEntity.createDefaultAlbum();
+        this.mDefaultAlbum = AlbumEntity.createDefaultAlbum(context);
     }
 
     public void start(@NonNull final ContentResolver cr, @NonNull final IAlbumTaskCallback callback) {
@@ -167,7 +170,7 @@ public class AlbumTask {
             if (!TextUtils.isEmpty(bucketName)) {
                 album.mBucketName = bucketName;
             } else {
-                album.mBucketName = UNKNOWN_ALBUM_NAME;
+                album.mBucketName = mUnknownAlbumName;
                 mUnknownAlbumNumber++;
             }
             if (album.mImageList.size() > 0) {

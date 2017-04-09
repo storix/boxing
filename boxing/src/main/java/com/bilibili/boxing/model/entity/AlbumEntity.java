@@ -17,8 +17,12 @@
 
 package com.bilibili.boxing.model.entity;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+
+import com.bilibili.boxing.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +50,10 @@ public class AlbumEntity implements Parcelable {
         mIsSelected = false;
     }
 
-    public static AlbumEntity createDefaultAlbum() {
+    public static AlbumEntity createDefaultAlbum(@NonNull final Context context) {
         AlbumEntity result = new AlbumEntity();
         result.mBucketId = DEFAULT_NAME;
-        result.mBucketName = "所有相片";
+        result.mBucketName = context.getString(R.string.boxing_all_photos_album);
         result.mIsSelected = true;
         return result;
     }

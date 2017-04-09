@@ -20,6 +20,7 @@ package com.bilibili.boxing;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -240,6 +241,12 @@ public abstract class AbsBoxingViewFragment extends Fragment implements PickerCo
     @Override
     public final ContentResolver getAppCr() {
         return getActivity().getApplicationContext().getContentResolver();
+    }
+
+    @NonNull
+    @Override
+    public Context getContext() {
+        return getActivity().getApplicationContext();
     }
 
     /**

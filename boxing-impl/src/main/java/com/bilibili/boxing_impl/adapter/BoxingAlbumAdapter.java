@@ -26,8 +26,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bilibili.boxing.BoxingMediaLoader;
-import com.bilibili.boxing.loader.IBoxingMediaLoader;
-import com.bilibili.boxing.loader.IBoxingMediaRecyclingLoader;
 import com.bilibili.boxing.model.entity.AlbumEntity;
 import com.bilibili.boxing.model.entity.impl.ImageMedia;
 import com.bilibili.boxing_impl.R;
@@ -53,9 +51,7 @@ public class BoxingAlbumAdapter extends RecyclerView.Adapter<BoxingAlbumAdapter.
 
     public BoxingAlbumAdapter(Context context) {
         this.mAlums = new ArrayList<>();
-        final AlbumEntity defaultAlbum = AlbumEntity.createDefaultAlbum();
-        defaultAlbum.mBucketName = context.getString(R.string.boxing_all_photos_album);
-        this.mAlums.add(defaultAlbum);
+        this.mAlums.add(AlbumEntity.createDefaultAlbum(context));
 
         this.mInflater = LayoutInflater.from(context);
     }

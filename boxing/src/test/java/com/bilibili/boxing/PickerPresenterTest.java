@@ -18,6 +18,7 @@
 package com.bilibili.boxing;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.test.mock.MockContentResolver;
 import android.text.TextUtils;
 
@@ -138,10 +139,10 @@ public class PickerPresenterTest {
     @Test
     public void loadAlbum() {
         mPresenter.loadAlbums();
-        Mockito.verify(mPickerManager).loadAlbum(any(ContentResolver.class)
+        Mockito.verify(mPickerManager).loadAlbum(any(Context.class), any(ContentResolver.class)
                 , mAlbumTaskCallback.capture());
         List<AlbumEntity> albums = new ArrayList<>();
-        albums.add(AlbumEntity.createDefaultAlbum());
+        albums.add(new AlbumEntity());
         mAlbumTaskCallback.getValue().postAlbumList(albums);
 
         ArgumentCaptor<List> showVideoCaptor = ArgumentCaptor.forClass(List.class);

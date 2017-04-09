@@ -66,7 +66,7 @@ public class PickerModuleTest {
 
         ContentResolver cr = RuntimeEnvironment.application.getContentResolver();
         assertNotNull(cr);
-        mPickerManager.loadAlbum(cr, new IAlbumTaskCallback() {
+        mPickerManager.loadAlbum(RuntimeEnvironment.application, cr, new IAlbumTaskCallback() {
             @Override
             public void postAlbumList(List<AlbumEntity> list) {
                 assertNotNull(list);

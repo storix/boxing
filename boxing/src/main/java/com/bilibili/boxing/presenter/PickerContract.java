@@ -18,6 +18,7 @@
 package com.bilibili.boxing.presenter;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -63,6 +64,14 @@ public interface PickerContract {
          */
         @NonNull
         ContentResolver getAppCr();
+
+        /**
+         * get the context for localization purposes.
+         *
+         * @return {@link Context}.
+         */
+        @NonNull
+        Context getContext();
 
         /**
          * call when the view should be finished or the process is finished

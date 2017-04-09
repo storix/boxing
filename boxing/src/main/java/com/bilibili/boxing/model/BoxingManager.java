@@ -18,6 +18,7 @@
 package com.bilibili.boxing.model;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.bilibili.boxing.model.callback.IAlbumTaskCallback;
@@ -66,12 +67,12 @@ public class BoxingManager {
 
     }
 
-    public void loadAlbum(@NonNull final ContentResolver cr, @NonNull final IAlbumTaskCallback callback) {
+    public void loadAlbum(@NonNull final Context context, @NonNull final ContentResolver cr, @NonNull final IAlbumTaskCallback callback) {
         BoxingExecutor.getInstance().runWorker(new Runnable() {
 
             @Override
             public void run() {
-                new AlbumTask().start(cr, callback);
+                new AlbumTask(context).start(cr, callback);
             }
         });
 

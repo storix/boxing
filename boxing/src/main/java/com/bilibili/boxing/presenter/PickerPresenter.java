@@ -72,7 +72,7 @@ public class PickerPresenter implements PickerContract.Presenter {
     @Override
     public void loadAlbums() {
         ContentResolver cr = mTasksView.getAppCr();
-        BoxingManager.getInstance().loadAlbum(cr, mLoadAlbumCallback);
+        BoxingManager.getInstance().loadAlbum(mTasksView.getContext(), cr, mLoadAlbumCallback);
     }
 
     @Override
