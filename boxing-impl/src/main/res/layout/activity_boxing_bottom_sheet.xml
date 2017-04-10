@@ -29,7 +29,7 @@
 
         <include layout="@layout/layout_boxing_app_bar"/>
 
-        <ImageView
+        <me.relex.photodraweeview.PhotoDraweeView
             android:id="@+id/media_result"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

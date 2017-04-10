@@ -24,7 +24,7 @@
                 android:background="?android:selectableItemBackground"
                 android:paddingTop="@dimen/boxing_item_spacing">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/album_thumbnail"
         android:layout_width="50dp"
         android:layout_height="50dp"

@@ -122,11 +122,10 @@ bintray {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:design:25.3.1'
-    compile('com.chensl.rotatephotoview:rotatephotoview:1.0.5') {
-        exclude group: 'com.android.support', module: 'appcompat'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude module: 'recyclerview-v7'
-    }
+
+    compile 'com.facebook.fresco:fresco:1.2.0'
+    compile 'me.relex:photodraweeview:1.1.2'
+
     androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2') {
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.android.support', module: 'support-v4'
