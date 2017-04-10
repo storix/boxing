@@ -48,4 +48,7 @@
     <string name="boxing_nothing_found">什么也找不到</string>
     <string name="boxing_too_many_picture_fmt">您最多只能选择%d张图片</string>
 
+    <!-- Content descriptions -->
+    <string name="boxing_description_toolbar_checkbox">Use to pick an image</string>
+
 </resources>

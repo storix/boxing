@@ -22,6 +22,6 @@
     <item
         android:id="@+id/menu_image_item_selected"
         android:icon="@drawable/shape_boxing_unchecked"
-        android:title=""
+        android:title="@string/boxing_description_toolbar_checkbox"
         app:showAsAction="always" />
 </menu>
