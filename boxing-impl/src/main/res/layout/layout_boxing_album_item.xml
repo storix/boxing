@@ -31,7 +31,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="12dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="center"/>
 
     <TextView
         android:id="@+id/album_name"
