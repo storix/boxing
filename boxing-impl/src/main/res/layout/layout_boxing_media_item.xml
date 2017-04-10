@@ -26,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:scaleType="center"/>
+        android:scaleType="center"
+        android:contentDescription="@string/boxing_description_media_item"/>
 
     <ImageView
         android:id="@+id/media_item_check"

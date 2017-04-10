@@ -50,5 +50,6 @@
 
     <!-- Content descriptions -->
     <string name="boxing_description_toolbar_checkbox">Use to pick an image</string>
+    <string name="boxing_description_media_item">The media thumbnail</string>
 
 </resources>
