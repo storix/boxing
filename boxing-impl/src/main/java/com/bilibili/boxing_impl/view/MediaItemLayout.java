@@ -31,13 +31,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bilibili.boxing.BoxingMediaLoader;
-import com.bilibili.boxing.loader.IBoxingMediaLoader;
-import com.bilibili.boxing.loader.IBoxingMediaRecyclingLoader;
 import com.bilibili.boxing.model.entity.BaseMedia;
 import com.bilibili.boxing.model.entity.impl.ImageMedia;
 import com.bilibili.boxing.model.entity.impl.VideoMedia;
 import com.bilibili.boxing_impl.R;
 import com.bilibili.boxing_impl.WindowManagerHelper;
+import com.bilibili.boxing_impl.util.DrawableUtils;
 
 
 /**
@@ -54,6 +53,7 @@ public class MediaItemLayout extends FrameLayout {
     private ImageView mCoverImg;
     private ScreenType mScreenType;
     private String mCoverImagePath = "";
+    private Drawable mCheckedDrawable;
 
     private enum ScreenType {
         SMALL(100), NORMAL(180), LARGE(320);
@@ -78,6 +78,7 @@ public class MediaItemLayout extends FrameLayout {
 
     public MediaItemLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mCheckedDrawable = DrawableUtils.getTintedDrawable(context, R.drawable.ic_boxing_checked_black,  R.color.boxing_checked_tint);
         View view = LayoutInflater.from(context).inflate(R.layout.layout_boxing_media_item, this, true);
         mCoverImg = (ImageView) view.findViewById(R.id.media_item);
         mCheckImg = (ImageView) view.findViewById(R.id.media_item_check);
@@ -162,7 +163,7 @@ public class MediaItemLayout extends FrameLayout {
     public void setChecked(boolean isChecked) {
         if (isChecked) {
             mFontLayout.setVisibility(View.VISIBLE);
-            mCheckImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_boxing_checked));
+            mCheckImg.setImageDrawable(mCheckedDrawable);
         } else {
             mFontLayout.setVisibility(View.GONE);
             mCheckImg.setImageDrawable(getResources().getDrawable(R.drawable.shape_boxing_unchecked));

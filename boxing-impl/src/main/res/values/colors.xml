@@ -22,6 +22,8 @@
     <color name="boxing_colorPrimaryAlpha">#44000000</color>
     <color name="boxing_colorAccent">#FF4081</color>
 
+    <color name="boxing_checked_tint">#5CB269</color>
+
     <color name="boxing_gray">#999999</color>
     <color name="boxing_gray1">#333333</color>
 

@@ -18,11 +18,13 @@
 package com.bilibili.boxing_impl.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -39,6 +41,7 @@ import com.bilibili.boxing.model.entity.BaseMedia;
 import com.bilibili.boxing.model.entity.impl.ImageMedia;
 import com.bilibili.boxing.model.task.IMediaTask;
 import com.bilibili.boxing_impl.R;
+import com.bilibili.boxing_impl.util.DrawableUtils;
 import com.bilibili.boxing_impl.view.HackyViewPager;
 
 import java.util.ArrayList;
@@ -73,11 +76,13 @@ public class BoxingViewActivity extends AbsBoxingViewActivity {
     private ArrayList<BaseMedia> mImages;
     private ArrayList<BaseMedia> mSelectedImages;
     private MenuItem mSelectedMenuItem;
+    private Drawable mCheckedDrawable;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boxing_view);
+        mCheckedDrawable = DrawableUtils.getTintedDrawable(this, R.drawable.ic_boxing_checked_black,  R.color.boxing_checked_tint);
         createToolbar();
         initData();
         initView();
@@ -206,7 +211,7 @@ public class BoxingViewActivity extends AbsBoxingViewActivity {
 
     private void setMenuIcon(boolean isSelected) {
         if (mNeedEdit) {
-            mSelectedMenuItem.setIcon(isSelected ? R.drawable.ic_boxing_checked : R.drawable.shape_boxing_unchecked);
+            mSelectedMenuItem.setIcon(isSelected ? mCheckedDrawable : ContextCompat.getDrawable(this, R.drawable.shape_boxing_unchecked));
         }
     }
 
