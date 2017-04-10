@@ -17,36 +17,37 @@
 
 <resources>
     <string name="boxing_app_name">Boxing</string>
-    <string name="boxing_ok">确定</string>
-    <string name="boxing_preview">预览</string>
-    <string name="boxing_all_photos_album">所有相片</string>
-    <string name="boxing_unknown_album">未知</string>
-    <string name="boxing_fab_label_camera">拍照</string>
 
-    <string name="boxing_image_preview_title_fmt">%1$s/%2$s</string>
-    <string name="boxing_image_preview_ok_fmt">%1$s/%2$s 确定</string>
-    <string name="boxing_image_select_ok_fmt">(%1$s/%2$s) 确定</string>
+    <string name="boxing_ok">OK</string>
+    <string name="boxing_preview">Preview</string>
+    <string name="boxing_all_photos_album">All photos</string>
+    <string name="boxing_unknown_album">Unknown</string>
+    <string name="boxing_fab_label_camera">take a shot</string>
     <string name="boxing_album_images_fmt">(%d)</string>
 
-    <string name="boxing_max_image_over_fmt">你最多只能选择%d张图片</string>
-    <string name="boxing_image_too_big">您选择的图片过大，请压缩后再上传</string>
-    <string name="boxing_pick_single_video">视频单选</string>
-    <string name="boxing_pick_multi_image">图片多选</string>
-    <string name="boxing_pick_single_image_crop">图片单选加裁剪</string>
-    <string name="boxing_pick_single_image">图片单选</string>
-    <string name="boxing_video_title">视频相册</string>
-    <string name="boxing_finish">完成</string>
-    <string name="boxing_start_pick">开始选图</string>
-    <string name="boxing_load_image_fail">肥肠抱歉，加载出错啦</string>
-    <string name="boxing_storage_permission_deny">需要访问你的存储设备来选择图片，请在“系统设置”或授权对话框中允许“存储空间”权限。</string>
-    <string name="boxing_camera_permission_deny">需要访问你的相机来拍照，请在“系统设置”或授权对话框中允许“使用相机”权限。</string>
-    <string name="boxing_storage_deny">设备存储读取出错或暂不可用，请稍候重试</string>
-    <string name="boxing_crop_error">肥肠抱歉，裁剪出错啦</string>
-    <string name="boxing_camera_unavailble">相机不可用,请检查相机权限！</string>
-    <string name="boxing_handling">处理中</string>
-    <string name="boxing_default_album">默认相册</string>
-    <string name="boxing_nothing_found">什么也找不到</string>
-    <string name="boxing_too_many_picture_fmt">您最多只能选择%d张图片</string>
+    <string name="boxing_image_preview_title_fmt">%1$s/%2$s</string>
+    <string name="boxing_image_preview_ok_fmt">%1$s/%2$s OK</string>
+    <string name="boxing_image_select_ok_fmt">(%1$s/%2$s) OK</string>
+
+    <string name="boxing_max_image_over_fmt">%d picture is limited</string>
+    <string name="boxing_image_too_big">The image is too big!</string>
+    <string name="boxing_pick_single_video">Pick a video</string>
+    <string name="boxing_pick_multi_image">Pick pictures</string>
+    <string name="boxing_pick_single_image_crop">Pick a picture with crop</string>
+    <string name="boxing_pick_single_image">Pick a picture</string>
+    <string name="boxing_video_title">videos</string>
+    <string name="boxing_storage_deny">Device storage read error or temporarily unavailable. Please try again later</string>
+    <string name="boxing_finish">finish</string>
+    <string name="boxing_start_pick">start</string>
+    <string name="boxing_load_image_fail">load fail!</string>
+    <string name="boxing_storage_permission_deny">You need to access the storage device to select the picture
+        , please allow "storage space" right in the "System Settings" dialog box or authorization.</string>
+    <string name="boxing_camera_permission_deny">To access your camera to take pictures,
+        enable the "Use Camera" permission in the "System Settings" or Authorization dialog box.</string>
+    <string name="boxing_default_album">pictures</string>
+    <string name="boxing_crop_error">sorry, error occurs when cropping</string>
+    <string name="boxing_nothing_found">nothing!</string>
+    <string name="boxing_too_many_picture_fmt">You can only select up to %d pictures</string>
 
     <!-- Content descriptions -->
     <string name="boxing_description_toolbar_checkbox">Use to pick an image</string>

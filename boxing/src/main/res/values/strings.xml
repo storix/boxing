@@ -18,7 +18,7 @@
 <resources>
     <string name="boxing_app_name">Boxing</string>
 
-    <string name="boxing_all_photos_album">所有相片</string>
-    <string name="boxing_unknown_album">未知</string>
-    <string name="boxing_image_too_big">您选择的图片过大，请压缩后再上传</string>
+    <string name="boxing_image_too_big">The image is too big!</string>
+    <string name="boxing_all_photos_album">All photos</string>
+    <string name="boxing_unknown_album">Unknown</string>
 </resources>
