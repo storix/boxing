@@ -173,11 +173,6 @@ public class BoxingRawImageFragment extends BoxingBaseFragment {
             }
             BoxingLog.d(t != null ? t.getMessage() : "load raw image error.");
             mWr.get().dismissProgressDialog();
-            mWr.get().mImageView.setImageResource(R.drawable.ic_boxing_broken_image);
-            final Drawable drawable = mWr.get().mImageView.getDrawable();
-            if (drawable != null) {
-                mWr.get().mImageView.update(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-            }
         }
     }
 }
