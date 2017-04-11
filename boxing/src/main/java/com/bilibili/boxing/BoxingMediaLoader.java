@@ -48,6 +48,8 @@ public class BoxingMediaLoader {
         if (ensureLoader()) {
             throw new IllegalStateException("init method should be called first");
         }
+
+        img.setTag(R.string.boxing_app_name, path);
         mLoader.displayThumbnail(img, path, width, height);
     }
 
@@ -55,6 +57,8 @@ public class BoxingMediaLoader {
         if (ensureLoader()) {
             throw new IllegalStateException("init method should be called first");
         }
+
+        img.setTag(R.string.boxing_app_name, path);
         mLoader.displayRaw(img, path, width, height, callback);
     }
 
