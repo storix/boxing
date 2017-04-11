@@ -132,23 +132,23 @@ public class MediaItemLayout extends FrameLayout {
         if (media instanceof ImageMedia) {
             mVideoLayout.setVisibility(GONE);
             mCoverImagePath = ((ImageMedia) media).getThumbnailPath();
-            setCover(mCoverImagePath);
+            setCover(media, mCoverImagePath);
         } else if (media instanceof VideoMedia) {
             mVideoLayout.setVisibility(VISIBLE);
             VideoMedia videoMedia = (VideoMedia) media;
             ((TextView) mVideoLayout.findViewById(R.id.video_duration_txt)).setText(videoMedia.getDuration());
             ((TextView) mVideoLayout.findViewById(R.id.video_size_txt)).setText(videoMedia.getSizeByUnit());
             mCoverImagePath = videoMedia.getPath();
-            setCover(mCoverImagePath);
+            setCover(media, mCoverImagePath);
         }
     }
 
-    private void setCover(@NonNull String path) {
+    private void setCover(@NonNull BaseMedia media, @NonNull String path) {
         if (mCoverImg == null || TextUtils.isEmpty(path)) {
             return;
         }
 
-        BoxingMediaLoader.getInstance().displayThumbnail(mCoverImg, path, mScreenType.getValue(), mScreenType.getValue());
+        BoxingMediaLoader.getInstance().displayThumbnail(mCoverImg, media, path, mScreenType.getValue(), mScreenType.getValue());
     }
 
     /**

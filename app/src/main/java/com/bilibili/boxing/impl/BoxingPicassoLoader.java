@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import com.bilibili.boxing.demo.R;
 import com.bilibili.boxing.loader.IBoxingCallback;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
+import com.bilibili.boxing.model.entity.BaseMedia;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
@@ -38,7 +39,7 @@ import com.squareup.picasso.Transformation;
 public class BoxingPicassoLoader implements IBoxingMediaLoader {
 
     @Override
-    public void displayThumbnail(@NonNull ImageView img, @NonNull String absPath, int width, int height) {
+    public void displayThumbnail(@NonNull ImageView img, @NonNull BaseMedia media, @NonNull String absPath, int width, int height) {
         String path = "file://" + absPath;
         Picasso.with(img.getContext()).load(path).placeholder(R.drawable.ic_boxing_default_image).centerCrop().resize(width, height).into(img);
     }

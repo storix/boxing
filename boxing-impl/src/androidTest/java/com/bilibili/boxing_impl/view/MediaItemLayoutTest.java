@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import com.bilibili.boxing.BoxingMediaLoader;
 import com.bilibili.boxing.loader.IBoxingCallback;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
+import com.bilibili.boxing.model.entity.BaseMedia;
 import com.bilibili.boxing.model.entity.impl.VideoMedia;
 import com.bilibili.boxing_impl.R;
 
@@ -47,7 +48,7 @@ public class MediaItemLayoutTest {
     public void setup() {
         BoxingMediaLoader.getInstance().init(new IBoxingMediaLoader() {
             @Override
-            public void displayThumbnail(@NonNull ImageView img, @NonNull String absPath, int width, int height) {
+            public void displayThumbnail(@NonNull ImageView img, @NonNull BaseMedia media, @NonNull String absPath, int width, int height) {
 
             }
 

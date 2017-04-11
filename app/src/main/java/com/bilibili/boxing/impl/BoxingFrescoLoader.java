@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import com.bilibili.boxing.demo.R;
 import com.bilibili.boxing.loader.IBoxingCallback;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
+import com.bilibili.boxing.model.entity.BaseMedia;
 import com.bilibili.boxing.utils.BoxingFileHelper;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.executors.UiThreadImmediateExecutorService;
@@ -93,7 +94,7 @@ public class BoxingFrescoLoader implements IBoxingMediaLoader {
 
 
     @Override
-    public void displayThumbnail(@NonNull final ImageView img, @NonNull final String absPath, int width, int height) {
+    public void displayThumbnail(@NonNull final ImageView img, @NonNull BaseMedia media, @NonNull final String absPath, int width, int height) {
         String finalAbsPath = "file://" + absPath;
         ImageRequestBuilder requestBuilder = ImageRequestBuilder.newBuilderWithSource(Uri.parse(finalAbsPath));
         requestBuilder.setResizeOptions(new ResizeOptions(width, height));

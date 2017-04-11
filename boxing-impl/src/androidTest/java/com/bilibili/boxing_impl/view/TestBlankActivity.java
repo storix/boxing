@@ -28,6 +28,7 @@ import com.bilibili.boxing.BoxingMediaLoader;
 import com.bilibili.boxing.loader.IBoxingCallback;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
 import com.bilibili.boxing.model.config.BoxingConfig;
+import com.bilibili.boxing.model.entity.BaseMedia;
 import com.bilibili.boxing.presenter.PickerPresenter;
 import com.bilibili.boxing_impl.R;
 import com.bilibili.boxing_impl.ui.BoxingViewFragment;
@@ -45,7 +46,7 @@ public class TestBlankActivity extends FragmentActivity {
         BoxingMediaLoader.getInstance().init(new IBoxingMediaLoader() {
 
             @Override
-            public void displayThumbnail(@NonNull ImageView img, @NonNull String absPath, int width, int height) {
+            public void displayThumbnail(@NonNull ImageView img, @NonNull BaseMedia media, @NonNull String absPath, int width, int height) {
 
             }
 

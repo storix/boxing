@@ -76,7 +76,7 @@ public class BoxingAlbumAdapter extends RecyclerView.Adapter<BoxingAlbumAdapter.
             ImageMedia media = (ImageMedia) album.mImageList.get(COVER_IMAGE_INDEX);
             if (media != null) {
                 albumViewHolder.mCoverImagePath = media.getPath();
-                BoxingMediaLoader.getInstance().displayThumbnail(albumViewHolder.mCoverImg, media.getPath(), 50, 50);
+                BoxingMediaLoader.getInstance().displayThumbnail(albumViewHolder.mCoverImg, media, media.getPath(), 50, 50);
             }
             albumViewHolder.mLayout.setTag(adapterPos);
             albumViewHolder.mLayout.setOnClickListener(this);

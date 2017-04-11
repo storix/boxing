@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import com.bilibili.boxing.loader.IBoxingCallback;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
 import com.bilibili.boxing.loader.IBoxingMediaRecyclingLoader;
+import com.bilibili.boxing.model.entity.BaseMedia;
 
 /**
  * A loader holding {@link IBoxingMediaLoader} to displayThumbnail medias.
@@ -44,13 +45,13 @@ public class BoxingMediaLoader {
         this.mLoader = loader;
     }
 
-    public void displayThumbnail(@NonNull ImageView img, @NonNull String path, int width, int height) {
+    public void displayThumbnail(@NonNull ImageView img, @NonNull BaseMedia media, @NonNull String path, int width, int height) {
         if (ensureLoader()) {
             throw new IllegalStateException("init method should be called first");
         }
 
         img.setTag(R.string.boxing_app_name, path);
-        mLoader.displayThumbnail(img, path, width, height);
+        mLoader.displayThumbnail(img, media, path, width, height);
     }
 
     public void displayRaw(@NonNull ImageView img, @NonNull String path, int width, int height, IBoxingCallback callback) {

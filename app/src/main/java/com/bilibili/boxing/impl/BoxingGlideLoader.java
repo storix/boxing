@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import com.bilibili.boxing.demo.R;
 import com.bilibili.boxing.loader.IBoxingCallback;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
+import com.bilibili.boxing.model.entity.BaseMedia;
 import com.bumptech.glide.BitmapTypeRequest;
 import com.bilibili.boxing.loader.IBoxingMediaRecyclingLoader;
 import com.bumptech.glide.Glide;
@@ -39,7 +40,7 @@ import com.bumptech.glide.request.target.Target;
 public class BoxingGlideLoader implements IBoxingMediaRecyclingLoader {
 
     @Override
-    public void displayThumbnail(@NonNull ImageView img, @NonNull String absPath, int width, int height) {
+    public void displayThumbnail(@NonNull ImageView img, @NonNull BaseMedia media, @NonNull String absPath, int width, int height) {
         String path = "file://" + absPath;
         try {
             // https://github.com/bumptech/glide/issues/1531
