@@ -156,14 +156,9 @@ public class BoxingRawImageFragment extends BoxingBaseFragment {
             mWr.get().dismissProgressDialog();
             final Drawable drawable = mWr.get().mImageView.getDrawable();
             if (drawable != null) {
-                if (drawable.getIntrinsicHeight() > (drawable.getIntrinsicWidth() << 2)) {
-                    // handle the super height image.
-                    int scale = drawable.getIntrinsicHeight() / drawable.getIntrinsicWidth();
-                    scale = Math.min(MAX_SCALE, scale);
-                    mWr.get().mImageView.setMaximumScale(scale);
-                    mWr.get().mImageView.setScale(scale, true);
+                if (drawable.getIntrinsicHeight() > 0 && drawable.getIntrinsicWidth() > 0) {
+                    mWr.get().mImageView.update(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
                 }
-                mWr.get().mImageView.update(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             }
             BoxingViewActivity activity = mWr.get().getThisActivity();
             if (activity != null && activity.mGallery != null) {
