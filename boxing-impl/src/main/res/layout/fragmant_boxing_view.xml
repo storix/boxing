@@ -51,7 +51,7 @@
 
         <Button
             android:id="@+id/choose_preview_btn"
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="@dimen/boxing_item_spacing"
